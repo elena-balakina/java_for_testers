@@ -28,6 +28,6 @@ public class MyFirstProgram {
 
         System.out.println();
         System.out.println("Результат с помощью метода класса:");
-        System.out.printf("Расстояние между точками (%.2f; %.2f) и (%.2f; %.2f) = %.2f%n", p1.x, p1.y, p2.x, p2.y, p1.distance(p1, p2));
+        System.out.printf("Расстояние между точками (%.2f; %.2f) и (%.2f; %.2f) = %.2f%n", p1.x, p1.y, p2.x, p2.y, p1.distance(p2));
     }
 }
