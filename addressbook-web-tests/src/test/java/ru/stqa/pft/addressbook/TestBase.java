@@ -18,12 +18,12 @@ public class TestBase {
     public void setUp() throws Exception {
         driver = new ChromeDriver();
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+        driver.get("http://localhost/addressbook/");
         login("admin", "secret");
     }
 
     private void login(String userName, String password) {
         // вход в ЛК
-        driver.get("http://localhost/addressbook/");
         driver.findElement(By.name("user")).clear();
         driver.findElement(By.name("user")).sendKeys(userName);
         driver.findElement(By.name("pass")).click();
@@ -50,6 +50,28 @@ public class TestBase {
 
     protected void initGroupCreation() {
         driver.findElement(By.name("new")).click();
+    }
+
+    protected void submitContactCreation() {
+      driver.findElement(By.xpath("(//input[@name='submit'])[2]")).click();
+    }
+
+    protected void fillContactForm(ContactData contactData) {
+      driver.findElement(By.name("firstname")).click();
+      driver.findElement(By.name("firstname")).clear();
+      driver.findElement(By.name("firstname")).sendKeys(contactData.getFirstName());
+      driver.findElement(By.name("lastname")).click();
+      driver.findElement(By.name("lastname")).clear();
+      driver.findElement(By.name("lastname")).sendKeys(contactData.getLastName());
+      driver.findElement(By.name("address")).click();
+      driver.findElement(By.name("address")).clear();
+      driver.findElement(By.name("address")).sendKeys(contactData.getAddress());
+      driver.findElement(By.name("mobile")).click();
+      driver.findElement(By.name("mobile")).clear();
+      driver.findElement(By.name("mobile")).sendKeys(contactData.getMobilePhone());
+      driver.findElement(By.name("email")).click();
+      driver.findElement(By.name("email")).clear();
+      driver.findElement(By.name("email")).sendKeys(contactData.getEmail());
     }
 
     protected void clickLink(String linkText) {
