@@ -1,28 +1,27 @@
-package ru.stqa.pft.addressbook;
+package ru.stqa.pft.addressbook.appmanager;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoAlertPresentException;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
+import ru.stqa.pft.addressbook.model.ContactData;
+import ru.stqa.pft.addressbook.model.GroupData;
 
 import java.util.concurrent.TimeUnit;
 
-public class TestBase {
+public class ApplicationManager {
 
     public WebDriver driver;
 
-    @BeforeMethod(alwaysRun = true)
-    public void setUp() throws Exception {
+    public void init() {
         driver = new ChromeDriver();
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
         driver.get("http://localhost/addressbook/");
         login("admin", "secret");
     }
 
-    private void login(String userName, String password) {
+    public void login(String userName, String password) {
         // вход в ЛК
         driver.findElement(By.name("user")).clear();
         driver.findElement(By.name("user")).sendKeys(userName);
@@ -32,11 +31,11 @@ public class TestBase {
         driver.findElement(By.xpath("//input[@value='Login']")).click();
     }
 
-    protected void submitGroupCreation() {
+    public void submitGroupCreation() {
         driver.findElement(By.name("submit")).click();
     }
 
-    protected void fillGroupForm(GroupData groupData) {
+    public void fillGroupForm(GroupData groupData) {
         driver.findElement(By.name("group_name")).click();
         driver.findElement(By.name("group_name")).clear();
         driver.findElement(By.name("group_name")).sendKeys(groupData.getGroupName());
@@ -48,43 +47,42 @@ public class TestBase {
         driver.findElement(By.name("group_footer")).sendKeys(groupData.getGroupFooter());
     }
 
-    protected void initGroupCreation() {
+    public void initGroupCreation() {
         driver.findElement(By.name("new")).click();
     }
 
-    protected void submitContactCreation() {
-      driver.findElement(By.xpath("(//input[@name='submit'])[2]")).click();
+    public void submitContactCreation() {
+        driver.findElement(By.xpath("(//input[@name='submit'])[2]")).click();
     }
 
-    protected void fillContactForm(ContactData contactData) {
-      driver.findElement(By.name("firstname")).click();
-      driver.findElement(By.name("firstname")).clear();
-      driver.findElement(By.name("firstname")).sendKeys(contactData.getFirstName());
-      driver.findElement(By.name("lastname")).click();
-      driver.findElement(By.name("lastname")).clear();
-      driver.findElement(By.name("lastname")).sendKeys(contactData.getLastName());
-      driver.findElement(By.name("address")).click();
-      driver.findElement(By.name("address")).clear();
-      driver.findElement(By.name("address")).sendKeys(contactData.getAddress());
-      driver.findElement(By.name("mobile")).click();
-      driver.findElement(By.name("mobile")).clear();
-      driver.findElement(By.name("mobile")).sendKeys(contactData.getMobilePhone());
-      driver.findElement(By.name("email")).click();
-      driver.findElement(By.name("email")).clear();
-      driver.findElement(By.name("email")).sendKeys(contactData.getEmail());
+    public void fillContactForm(ContactData contactData) {
+        driver.findElement(By.name("firstname")).click();
+        driver.findElement(By.name("firstname")).clear();
+        driver.findElement(By.name("firstname")).sendKeys(contactData.getFirstName());
+        driver.findElement(By.name("lastname")).click();
+        driver.findElement(By.name("lastname")).clear();
+        driver.findElement(By.name("lastname")).sendKeys(contactData.getLastName());
+        driver.findElement(By.name("address")).click();
+        driver.findElement(By.name("address")).clear();
+        driver.findElement(By.name("address")).sendKeys(contactData.getAddress());
+        driver.findElement(By.name("mobile")).click();
+        driver.findElement(By.name("mobile")).clear();
+        driver.findElement(By.name("mobile")).sendKeys(contactData.getMobilePhone());
+        driver.findElement(By.name("email")).click();
+        driver.findElement(By.name("email")).clear();
+        driver.findElement(By.name("email")).sendKeys(contactData.getEmail());
     }
 
-    protected void clickLink(String linkText) {
+    public void clickLink(String linkText) {
         driver.findElement(By.linkText(linkText)).click();
     }
 
-    @AfterMethod(alwaysRun = true)
-    public void tearDown() throws Exception {
+    public void stop() {
         clickLink("Logout");
         driver.quit();
     }
 
-    private boolean isElementPresent(By by) {
+    public boolean isElementPresent(By by) {
         try {
             driver.findElement(by);
             return true;
@@ -93,7 +91,7 @@ public class TestBase {
         }
     }
 
-    private boolean isAlertPresent() {
+    public boolean isAlertPresent() {
         try {
             driver.switchTo().alert();
             return true;
@@ -102,11 +100,11 @@ public class TestBase {
         }
     }
 
-    protected void deleteSelectedGroups() {
+    public void deleteSelectedGroups() {
         driver.findElement(By.name("delete")).click();
     }
 
-    protected void selectGroup() {
+    public void selectGroup() {
         driver.findElement(By.name("selected[]")).click();
     }
 }
