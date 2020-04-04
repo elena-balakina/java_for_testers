@@ -1,10 +1,10 @@
 package ru.stqa.pft.addressbook.tests;
 
 import org.testng.Assert;
-import org.testng.annotations.*;
+import org.testng.annotations.Test;
 import ru.stqa.pft.addressbook.model.GroupData;
 
-import java.util.concurrent.TimeUnit;
+import java.util.List;
 
 public class GroupCreationTests extends TestBase {
 
@@ -12,13 +12,12 @@ public class GroupCreationTests extends TestBase {
     public void testGroupCreation() throws Exception {
         app.getNavigationHelper().clickLink("groups");
 
-        int before = app.getGroupHelper().getGroupCount();
+        List<GroupData> before = app.getGroupHelper().getGroupsList();
 
         app.getGroupHelper().createGroup(new GroupData("testG", null, null));
 
-        int after = app.getGroupHelper().getGroupCount();
+        List<GroupData> after = app.getGroupHelper().getGroupsList();
 
-        Assert.assertEquals(after, before + 1);
-
+        Assert.assertEquals(after.size(), before.size() + 1);
     }
 }
