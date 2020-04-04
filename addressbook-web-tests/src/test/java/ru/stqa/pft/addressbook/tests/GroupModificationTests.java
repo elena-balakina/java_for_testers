@@ -16,7 +16,7 @@ public class GroupModificationTests extends TestBase {
 
         int before = app.getGroupHelper().getGroupCount();
 
-        app.getGroupHelper().selectGroup();
+        app.getGroupHelper().selectGroup(before - 1); //before-1 - изменяем самую нижнюю, последнюю в списке группу
         app.getGroupHelper().initGroupModification();
         app.getGroupHelper().fillGroupForm(new GroupData("testG", "newHeader", "newFooter"));
         app.getGroupHelper().submitGroupModification();

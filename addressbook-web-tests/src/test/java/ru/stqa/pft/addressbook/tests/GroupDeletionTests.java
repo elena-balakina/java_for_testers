@@ -16,7 +16,7 @@ public class GroupDeletionTests extends TestBase {
 
         int before = app.getGroupHelper().getGroupCount();
 
-        app.getGroupHelper().selectGroup();
+        app.getGroupHelper().selectGroup(before - 1); //before-1 - удаляем самую нижнюю, последнюю в списке группу
         app.getGroupHelper().deleteSelectedGroups();
         app.getNavigationHelper().clickLink("groups");
 
