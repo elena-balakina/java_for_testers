@@ -3,12 +3,12 @@ package ru.stqa.pft.addressbook.model;
 import java.util.Objects;
 
 public class GroupData {
-    private final String groupId;
+    private int groupId;
     private final String groupName;
     private final String groupHeader;
     private final String groupFooter;
 
-    public GroupData(String groupId, String groupName, String groupHeader, String groupFooter) {
+    public GroupData(int groupId, String groupName, String groupHeader, String groupFooter) {
         this.groupId = groupId;
         this.groupName = groupName;
         this.groupHeader = groupHeader;
@@ -16,13 +16,13 @@ public class GroupData {
     }
 
     public GroupData(String groupName, String groupHeader, String groupFooter) {
-        this.groupId = null;
+        this.groupId = 0;
         this.groupName = groupName;
         this.groupHeader = groupHeader;
         this.groupFooter = groupFooter;
     }
 
-    public String getGroupId() {
+    public int getGroupId() {
         return groupId;
     }
 
@@ -38,6 +38,10 @@ public class GroupData {
         return groupFooter;
     }
 
+    public void setGroupId(int groupId) {
+        this.groupId = groupId;
+    }
+
     @Override
     public String toString() {
         return "GroupData{" +
@@ -51,7 +55,7 @@ public class GroupData {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         GroupData groupData = (GroupData) o;
-        return Objects.equals(groupId, groupData.groupId) &&
+        return groupId == groupData.groupId &&
                 Objects.equals(groupName, groupData.groupName);
     }
 
