@@ -30,16 +30,16 @@ public class ContactHelper extends HelperBase {
         click(By.xpath("(//input[@name='submit'])[2]"));
     }
 
-    public void initContactModification() {
-        click(By.xpath("//td[8]/a/img"));
+    public void initContactModification(int index) {
+        driver.findElements(By.xpath("//td[8]/a/img")).get(index).click();
     }
 
     public void submitContactModification() {
         click(By.name("update"));
     }
 
-    public void selectContact() {
-        click(By.name("selected[]"));
+    public void selectContact(int index) {
+        driver.findElements(By.name("selected[]")).get(index).click();
     }
 
     public void deleteSelectedContact() {
@@ -55,5 +55,10 @@ public class ContactHelper extends HelperBase {
 
     public boolean isThereAContact() {
         return isElementPresent(By.name("selected[]"));
+    }
+
+    public int getContactCount() {
+        return driver.findElements(By.name("selected[]")).size();
+                //cssSelector([name="entry"]))
     }
 }
