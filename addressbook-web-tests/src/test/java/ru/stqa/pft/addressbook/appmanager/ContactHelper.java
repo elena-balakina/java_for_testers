@@ -70,13 +70,14 @@ public class ContactHelper extends HelperBase {
         List<WebElement> elements = driver.findElements(By.cssSelector("[name=\"entry\"]"));
 
         for (WebElement element : elements) {
-            String lastName = element.findElement(By.xpath("//td[2]")).getText();
-            String firstName = element.findElement(By.xpath("//td[3]")).getText();
-            String address = element.findElement(By.xpath("//td[4]")).getText();
-            String email = element.findElement(By.xpath("//td[5]")).getText();
-            String mobilePhone = element.findElement(By.xpath("//td[5]")).getText();
-            ContactData contact = new ContactData(firstName, lastName, address, mobilePhone, email, null);
+            String lastName = element.findElement(By.xpath("td[2]")).getText();
+            String firstName = element.findElement(By.xpath("td[3]")).getText();
+            String address = element.findElement(By.xpath("td[4]")).getText();
+            String email = element.findElement(By.xpath("td[5]")).getText();
+            String mobilePhone = element.findElement(By.xpath("td[6]")).getText();
+            String id = element.findElement(By.tagName("input")).getAttribute("value");
 
+            ContactData contact = new ContactData(id, firstName, lastName, address, mobilePhone, email, null);
             contacts.add(contact);
         }
         return contacts;

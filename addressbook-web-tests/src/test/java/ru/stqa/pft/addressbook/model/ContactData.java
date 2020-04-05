@@ -3,6 +3,7 @@ package ru.stqa.pft.addressbook.model;
 import java.util.Objects;
 
 public class ContactData {
+    private final String id;
     private final String firstName;
     private final String lastName;
     private final String address;
@@ -11,12 +12,27 @@ public class ContactData {
     private String group;
 
     public ContactData(String firstName, String lastName, String address, String mobilePhone, String email, String group) {
+        this.id = null;
         this.firstName = firstName;
         this.lastName = lastName;
         this.address = address;
         this.mobilePhone = mobilePhone;
         this.email = email;
         this.group = group;
+    }
+
+    public ContactData(String id, String firstName, String lastName, String address, String mobilePhone, String email, String group) {
+        this.id = id;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.address = address;
+        this.mobilePhone = mobilePhone;
+        this.email = email;
+        this.group = group;
+    }
+
+    public String getId() {
+        return id;
     }
 
     public String getFirstName() {
@@ -46,7 +62,8 @@ public class ContactData {
     @Override
     public String toString() {
         return "ContactData{" +
-                "firstName='" + firstName + '\'' +
+                "id='" + id + '\'' +
+                ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 '}';
     }
@@ -56,12 +73,13 @@ public class ContactData {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         ContactData that = (ContactData) o;
-        return Objects.equals(firstName, that.firstName) &&
+        return Objects.equals(id, that.id) &&
+                Objects.equals(firstName, that.firstName) &&
                 Objects.equals(lastName, that.lastName);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(firstName, lastName);
+        return Objects.hash(id, firstName, lastName);
     }
 }
