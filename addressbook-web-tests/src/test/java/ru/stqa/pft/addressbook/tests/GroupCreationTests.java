@@ -15,22 +15,22 @@ public class GroupCreationTests extends TestBase {
 
         List<GroupData> before = app.getGroupHelper().getGroupsList();
 
-        GroupData group = new GroupData("testG", null, null);
+        GroupData group = new GroupData("test2", null, null);
         app.getGroupHelper().createGroup(group);
 
         List<GroupData> after = app.getGroupHelper().getGroupsList();
 
         Assert.assertEquals(after.size(), before.size() + 1);
 
-        int max = 0;
-        for (GroupData g: after){
-            if (g.getGroupId() >max){
-                max = g.getGroupId();
-            }
-        }
+        // компаратор - это интерфейс, который не имеет реализации, а только декларирует, объявляет
+        // какие методы должны быть, но реализации не содержит
+        //анонимная функция
+        //Comparator<? super GroupData> byId = (o1, o2) -> Integer.compare(o1.getGroupId(), o2.getGroupId());
+
+        // можно превратить список в поток
+        int max = after.stream().max((o1, o2) -> Integer.compare(o1.getGroupId(), o2.getGroupId())).get().getGroupId();
 
         group.setGroupId(max);
-
         before.add(group);
 
         Assert.assertEquals(new HashSet<Object>(before), new HashSet<Object>(after));
