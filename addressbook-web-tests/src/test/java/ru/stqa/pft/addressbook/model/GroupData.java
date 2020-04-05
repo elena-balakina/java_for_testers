@@ -16,7 +16,7 @@ public class GroupData {
     }
 
     public GroupData(String groupName, String groupHeader, String groupFooter) {
-        this.groupId = 0;
+        this.groupId = Integer.MAX_VALUE; // id группы будет больше всех и она окажется самой последней при сортировке
         this.groupName = groupName;
         this.groupHeader = groupHeader;
         this.groupFooter = groupFooter;
@@ -55,12 +55,11 @@ public class GroupData {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         GroupData groupData = (GroupData) o;
-        return groupId == groupData.groupId &&
-                Objects.equals(groupName, groupData.groupName);
+        return Objects.equals(groupName, groupData.groupName);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(groupId, groupName);
+        return Objects.hash(groupName);
     }
 }
