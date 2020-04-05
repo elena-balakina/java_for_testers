@@ -5,19 +5,19 @@ import org.testng.annotations.Test;
 import ru.stqa.pft.addressbook.model.ContactData;
 import ru.stqa.pft.addressbook.model.GroupData;
 
+import java.util.List;
+
 public class ContactCreationTests extends TestBase {
 
     @Test
     public void testContactCreation() throws Exception {
+        List<ContactData> before = app.getContactHelper().getContactList();
 
-        int before = app.getContactHelper().getContactCount();
-
-
-        ContactData contact = new ContactData("Sonya", "Esina", "New York", "+79701111122", "mail2@gmail.com", "test1");
+        ContactData contact = new ContactData("Roman", "Popkov", "New York", "+79701111122", "mail2@gmail.com", "test1");
         app.getContactHelper().createContact(contact, true);
 
-        int after = app.getContactHelper().getContactCount();
+        List<ContactData> after = app.getContactHelper().getContactList();
 
-        Assert.assertEquals(after, before + 1);
+        Assert.assertEquals(after.size(), before.size() + 1);
     }
 }
