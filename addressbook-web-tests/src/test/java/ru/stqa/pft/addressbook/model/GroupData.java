@@ -3,24 +3,10 @@ package ru.stqa.pft.addressbook.model;
 import java.util.Objects;
 
 public class GroupData {
-    private int groupId;
-    private final String groupName;
-    private final String groupHeader;
-    private final String groupFooter;
-
-    public GroupData(int groupId, String groupName, String groupHeader, String groupFooter) {
-        this.groupId = groupId;
-        this.groupName = groupName;
-        this.groupHeader = groupHeader;
-        this.groupFooter = groupFooter;
-    }
-
-    public GroupData(String groupName, String groupHeader, String groupFooter) {
-        this.groupId = Integer.MAX_VALUE; // id группы будет больше всех и она окажется самой последней при сортировке
-        this.groupName = groupName;
-        this.groupHeader = groupHeader;
-        this.groupFooter = groupFooter;
-    }
+    private int groupId = Integer.MAX_VALUE; // id группы будет больше всех и она окажется самой последней при сортировке;
+    private String groupName;
+    private String groupHeader;
+    private String groupFooter;
 
     public int getGroupId() {
         return groupId;
@@ -38,8 +24,24 @@ public class GroupData {
         return groupFooter;
     }
 
-    public void setGroupId(int groupId) {
+    public GroupData withId(int groupId) {
         this.groupId = groupId;
+        return this;
+    }
+
+    public GroupData withName(String groupName) {
+        this.groupName = groupName;
+        return this;
+    }
+
+    public GroupData withHeader(String groupHeader) {
+        this.groupHeader = groupHeader;
+        return this;
+    }
+
+    public GroupData withFooter(String groupFooter) {
+        this.groupFooter = groupFooter;
+        return this;
     }
 
     @Override
