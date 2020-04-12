@@ -50,10 +50,24 @@ public class ContactHelper extends HelperBase {
         click(By.xpath("//input[@value='Delete']"));
     }
 
-    public void createContact(ContactData contact, boolean creation) {
+    public void create(ContactData contact, boolean creation) {
         click(By.linkText("add new"));
         fillContactForm(contact, creation);
         submitContactCreation();
+        click(By.linkText("home"));
+    }
+
+    public void modify(int index, ContactData contact) {
+        initContactModification(index);
+        fillContactForm(contact, false);
+        submitContactModification();
+        click(By.linkText("home"));
+    }
+
+    public void delete(int index) {
+        selectContact(index);
+        deleteSelectedContact();
+        driver.switchTo().alert().accept();
         click(By.linkText("home"));
     }
 
@@ -65,7 +79,7 @@ public class ContactHelper extends HelperBase {
         return driver.findElements(By.name("selected[]")).size();
     }
 
-    public List<ContactData> getContactList() {
+    public List<ContactData> list() {
         List<ContactData> contacts = new ArrayList<ContactData>();
         List<WebElement> elements = driver.findElements(By.cssSelector("[name=\"entry\"]"));
 
