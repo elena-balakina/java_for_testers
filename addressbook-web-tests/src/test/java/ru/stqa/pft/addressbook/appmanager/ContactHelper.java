@@ -7,8 +7,9 @@ import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import ru.stqa.pft.addressbook.model.ContactData;
 
-import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class ContactHelper extends HelperBase {
 
@@ -38,12 +39,16 @@ public class ContactHelper extends HelperBase {
         driver.findElements(By.xpath("//td[8]/a/img")).get(index).click();
     }
 
+    public void initContactModificationById(int id) {
+        driver.findElement(By.xpath("//a[@href=\"edit.php?id=" + id + "\"]")).click();
+    }
+
     public void submitContactModification() {
         click(By.name("update"));
     }
 
-    public void selectContact(int index) {
-        driver.findElements(By.name("selected[]")).get(index).click();
+    public void selectContactById(int id) {
+        driver.findElement(By.cssSelector("input[value='" + id + "']")).click();
     }
 
     public void deleteSelectedContact() {
@@ -57,15 +62,15 @@ public class ContactHelper extends HelperBase {
         click(By.linkText("home"));
     }
 
-    public void modify(int index, ContactData contact) {
-        initContactModification(index);
+    public void modify(ContactData contact) {
+        initContactModificationById(contact.getId());
         fillContactForm(contact, false);
         submitContactModification();
         click(By.linkText("home"));
     }
 
-    public void delete(int index) {
-        selectContact(index);
+    public void delete(ContactData contact) {
+        selectContactById(contact.getId());
         deleteSelectedContact();
         driver.switchTo().alert().accept();
         click(By.linkText("home"));
@@ -79,8 +84,8 @@ public class ContactHelper extends HelperBase {
         return driver.findElements(By.name("selected[]")).size();
     }
 
-    public List<ContactData> list() {
-        List<ContactData> contacts = new ArrayList<ContactData>();
+    public Set<ContactData> all() {
+        Set<ContactData> contacts = new HashSet<ContactData>();
         List<WebElement> elements = driver.findElements(By.cssSelector("[name=\"entry\"]"));
 
         for (WebElement element : elements) {
