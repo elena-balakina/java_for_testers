@@ -22,7 +22,9 @@ public class ContactHelper extends HelperBase {
         type(By.name("firstname"), contactData.getFirstName());
         type(By.name("lastname"), contactData.getLastName());
         type(By.name("address"), contactData.getAddress());
+        type(By.name("home"), contactData.getHomePhone());
         type(By.name("mobile"), contactData.getMobilePhone());
+        type(By.name("work"), contactData.getWorkPhone());
         type(By.name("email"), contactData.getEmail());
 
         if (creation) {
@@ -42,6 +44,7 @@ public class ContactHelper extends HelperBase {
 
     public void initContactModificationById(int id) {
         driver.findElement(By.xpath("//a[@href=\"edit.php?id=" + id + "\"]")).click();
+        //driver.findElement(By.xpath(String.format("//a[@href=\"edit.php?id=%s\"]", id))).click();
     }
 
     public void submitContactModification() {
@@ -94,13 +97,29 @@ public class ContactHelper extends HelperBase {
             String firstName = element.findElement(By.xpath("td[3]")).getText();
             String address = element.findElement(By.xpath("td[4]")).getText();
             String email = element.findElement(By.xpath("td[5]")).getText();
-            String mobilePhone = element.findElement(By.xpath("td[6]")).getText();
+            //String mobilePhone = element.findElement(By.xpath("td[6]")).getText();
+            String[] phones = element.findElement(By.xpath("td[6]")).getText().split("\n");
+
             int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("value"));
 
             ContactData contact = new ContactData().withId(id).withFirstName(firstName).withLastName(lastName).
-                    withAddress(address).withMobilePhone(mobilePhone).withEmail(email);
+                    withAddress(address).withHomePhone(phones[0]).withMobilePhone(phones[1]).
+                    withWorkPhone(phones[2]).withEmail(email);
             contacts.add(contact);
         }
         return contacts;
+    }
+
+    public ContactData infoFromEditForm(ContactData contact) {
+        initContactModificationById(contact.getId());
+        String lastName = driver.findElement(By.name("lastname")).getAttribute("value");
+        String firstName = driver.findElement(By.name("firstname")).getAttribute("value");
+        String home = driver.findElement(By.name("home")).getAttribute("value");
+        String mobile = driver.findElement(By.name("mobile")).getAttribute("value");
+        String work = driver.findElement(By.name("work")).getAttribute("value");
+
+        driver.navigate().back();
+        return new ContactData().withId(contact.getId()).withFirstName(firstName).withLastName(lastName).
+                withHomePhone(home).withMobilePhone(mobile).withWorkPhone(work);
     }
 }
