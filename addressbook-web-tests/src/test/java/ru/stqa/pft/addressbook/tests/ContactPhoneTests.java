@@ -4,6 +4,9 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import ru.stqa.pft.addressbook.model.ContactData;
 
+import java.util.Arrays;
+import java.util.stream.Collectors;
+
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
 
@@ -15,8 +18,9 @@ public class ContactPhoneTests extends TestBase {
 
         if (app.contact().all().size() == 0) {
             app.contact().create(new ContactData().withFirstName("Kolya").
-                    withLastName("Makov").withAddress("San Francisco").
-                    withMobilePhone("+79701111111").withEmail("mail@gmail.com").withGroup("test1"), true);
+                    withLastName("Makov").withAddress("Xeron").withHomePhone("212-20-50").
+                    withMobilePhone("+79701111122").withWorkPhone("333-50-80").
+                    withEmail("mail2@gmail.com").withGroup("test1"), true);
         }
     }
 
@@ -26,12 +30,17 @@ public class ContactPhoneTests extends TestBase {
         ContactData contact = app.contact().all().iterator().next();
         ContactData contactInfoFromEditForm = app.contact().infoFromEditForm(contact);
 
-        assertThat(contact.getHomePhone(), equalTo(cleaned(contactInfoFromEditForm.getHomePhone())));
-        assertThat(contact.getMobilePhone(), equalTo(cleaned(contactInfoFromEditForm.getMobilePhone())));
-        assertThat(contact.getWorkPhone(), equalTo(cleaned(contactInfoFromEditForm.getWorkPhone())));
+        assertThat(contact.getAllPhones(), equalTo(mergePhones(contactInfoFromEditForm)));
     }
 
-    public String cleaned(String phone) {
+    static String cleaned(String phone) {
         return phone.replaceAll("\\s", "").replaceAll("[-()]", "");
+    }
+
+    private String mergePhones(ContactData contact) {
+        return Arrays.asList(contact.getHomePhone(), contact.getMobilePhone(), contact.getWorkPhone())
+                .stream().filter(s -> s != null && !s.equals(""))
+                .map(ContactPhoneTests::cleaned)
+                .collect(Collectors.joining("\n"));
     }
 }
