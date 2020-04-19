@@ -101,7 +101,7 @@ public class ContactData {
         return this;
     }
 
-    public ContactData withHomePhone(String homePhones) {
+    public ContactData withHomePhone(String homePhone) {
         this.homePhone = homePhone;
         return this;
     }

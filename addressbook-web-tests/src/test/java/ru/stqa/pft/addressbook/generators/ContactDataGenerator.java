@@ -68,6 +68,7 @@ public class ContactDataGenerator {
 
     private static List<ContactData> generateContacts(int count) {
         List<ContactData> contacts = new ArrayList<ContactData>();
+        File photo = new File("src/test/resources/tiger.png");
 
         for (int i = 0; i < count; i++) {
             contacts.add(new ContactData().
