@@ -1,0 +1,62 @@
+[
+  {
+    "firstName": "First name 0",
+    "lastName": "Last name 0",
+    "address": "Address 0",
+    "homePhone": "000-00-00",
+    "mobilePhone": "+79131111120",
+    "workPhone": "000-00-00",
+    "email": "mail0@gmail.com",
+    "email2": "mail0@gmail.com",
+    "email3": "mail0@gmail.com",
+    "group": "test1"
+  },
+  {
+    "firstName": "First name 1",
+    "lastName": "Last name 1",
+    "address": "Address 1",
+    "homePhone": "111-11-11",
+    "mobilePhone": "+79131111121",
+    "workPhone": "111-11-11",
+    "email": "mail1@gmail.com",
+    "email2": "mail1@gmail.com",
+    "email3": "mail1@gmail.com",
+    "group": "test1"
+  },
+  {
+    "firstName": "First name 2",
+    "lastName": "Last name 2",
+    "address": "Address 2",
+    "homePhone": "222-22-22",
+    "mobilePhone": "+79131111122",
+    "workPhone": "222-22-22",
+    "email": "mail2@gmail.com",
+    "email2": "mail2@gmail.com",
+    "email3": "mail2@gmail.com",
+    "group": "test1"
+  },
+  {
+    "firstName": "First name 3",
+    "lastName": "Last name 3",
+    "address": "Address 3",
+    "homePhone": "333-33-33",
+    "mobilePhone": "+79131111123",
+    "workPhone": "333-33-33",
+    "email": "mail3@gmail.com",
+    "email2": "mail3@gmail.com",
+    "email3": "mail3@gmail.com",
+    "group": "test1"
+  },
+  {
+    "firstName": "First name 4",
+    "lastName": "Last name 4",
+    "address": "Address 4",
+    "homePhone": "444-44-44",
+    "mobilePhone": "+79131111124",
+    "workPhone": "444-44-44",
+    "email": "mail4@gmail.com",
+    "email2": "mail4@gmail.com",
+    "email3": "mail4@gmail.com",
+    "group": "test1"
+  }
+]
