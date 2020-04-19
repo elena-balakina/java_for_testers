@@ -1,9 +1,15 @@
 package ru.stqa.pft.addressbook.model;
 
+import com.thoughtworks.xstream.annotations.XStreamAlias;
+import com.thoughtworks.xstream.annotations.XStreamOmitField;
+
 import java.util.Objects;
 
+@XStreamAlias("group")
 public class GroupData {
+    @XStreamOmitField //не хотим, чтобы id сохранялся в XML-файл
     private int groupId = Integer.MAX_VALUE; // id группы будет больше всех и она окажется самой последней при сортировке;
+
     private String groupName;
     private String groupHeader;
     private String groupFooter;
