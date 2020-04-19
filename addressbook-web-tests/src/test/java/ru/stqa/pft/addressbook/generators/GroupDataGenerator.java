@@ -29,7 +29,7 @@ public class GroupDataGenerator {
             jCommander.usage();
             return;
         }
-        
+
         generator.run();
     }
 
