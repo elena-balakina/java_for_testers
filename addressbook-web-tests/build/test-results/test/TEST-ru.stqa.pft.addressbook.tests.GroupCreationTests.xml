@@ -1,9 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="ru.stqa.pft.addressbook.tests.GroupCreationTests" tests="3" skipped="0" failures="0" errors="0" timestamp="2020-04-19T08:50:22" hostname="DESKTOP-LRA1H77" time="4.273">
+<testsuite name="ru.stqa.pft.addressbook.tests.GroupCreationTests" tests="10" skipped="0" failures="0" errors="0" timestamp="2020-04-19T09:15:21" hostname="DESKTOP-LRA1H77" time="15.551">
   <properties/>
-  <testcase name="testGroupCreation[0](GroupData{groupId='0', groupName='test 0'})" classname="ru.stqa.pft.addressbook.tests.GroupCreationTests" time="1.65"/>
-  <testcase name="testGroupCreation[1](GroupData{groupId='0', groupName='test 1'})" classname="ru.stqa.pft.addressbook.tests.GroupCreationTests" time="1.283"/>
-  <testcase name="testGroupCreation[2](GroupData{groupId='0', groupName='test 2'})" classname="ru.stqa.pft.addressbook.tests.GroupCreationTests" time="1.339"/>
+  <testcase name="testGroupCreation[0](GroupData{groupId='2147483647', groupName='test 0'})" classname="ru.stqa.pft.addressbook.tests.GroupCreationTests" time="1.831"/>
+  <testcase name="testGroupCreation[1](GroupData{groupId='2147483647', groupName='test 1'})" classname="ru.stqa.pft.addressbook.tests.GroupCreationTests" time="1.567"/>
+  <testcase name="testGroupCreation[2](GroupData{groupId='2147483647', groupName='test 2'})" classname="ru.stqa.pft.addressbook.tests.GroupCreationTests" time="1.484"/>
+  <testcase name="testGroupCreation[3](GroupData{groupId='2147483647', groupName='test 3'})" classname="ru.stqa.pft.addressbook.tests.GroupCreationTests" time="1.413"/>
+  <testcase name="testGroupCreation[4](GroupData{groupId='2147483647', groupName='test 4'})" classname="ru.stqa.pft.addressbook.tests.GroupCreationTests" time="1.556"/>
+  <testcase name="testGroupCreation[5](GroupData{groupId='2147483647', groupName='test 5'})" classname="ru.stqa.pft.addressbook.tests.GroupCreationTests" time="1.532"/>
+  <testcase name="testGroupCreation[6](GroupData{groupId='2147483647', groupName='test 6'})" classname="ru.stqa.pft.addressbook.tests.GroupCreationTests" time="1.483"/>
+  <testcase name="testGroupCreation[7](GroupData{groupId='2147483647', groupName='test 7'})" classname="ru.stqa.pft.addressbook.tests.GroupCreationTests" time="1.527"/>
+  <testcase name="testGroupCreation[8](GroupData{groupId='2147483647', groupName='test 8'})" classname="ru.stqa.pft.addressbook.tests.GroupCreationTests" time="1.627"/>
+  <testcase name="testGroupCreation[9](GroupData{groupId='2147483647', groupName='test 9'})" classname="ru.stqa.pft.addressbook.tests.GroupCreationTests" time="1.531"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

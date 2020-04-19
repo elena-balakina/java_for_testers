@@ -1,5 +1,6 @@
 package ru.stqa.pft.addressbook.model;
 
+import com.google.gson.annotations.Expose;
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 import com.thoughtworks.xstream.annotations.XStreamOmitField;
 
@@ -10,8 +11,13 @@ public class GroupData {
     @XStreamOmitField //не хотим, чтобы id сохранялся в XML-файл
     private int groupId = Integer.MAX_VALUE; // id группы будет больше всех и она окажется самой последней при сортировке;
 
+    @Expose // поле будет включено в файл Json
     private String groupName;
+
+    @Expose // поле будет включено в файл Json
     private String groupHeader;
+
+    @Expose // поле будет включено в файл Json
     private String groupFooter;
 
     public int getGroupId() {
