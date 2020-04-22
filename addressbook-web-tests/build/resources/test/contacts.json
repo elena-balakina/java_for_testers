@@ -58,5 +58,17 @@
     "email2": "mail4@gmail.com",
     "email3": "mail4@gmail.com",
     "group": "test1"
+  },
+  {
+    "firstName": "First name 5",
+    "lastName": "Last name 5",
+    "address": "Address 5",
+    "homePhone": "555-55-55",
+    "mobilePhone": "+79131111125",
+    "workPhone": "555-55-55",
+    "email": "mail5@gmail.com",
+    "email2": "mail5@gmail.com",
+    "email3": "mail5@gmail.com",
+    "group": "test1"
   }
 ]
