@@ -3,6 +3,7 @@ package ru.stqa.pft.addressbook.tests;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.thoughtworks.xstream.XStream;
+import org.openqa.selenium.By;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import ru.stqa.pft.addressbook.model.ContactData;
@@ -92,6 +93,7 @@ public class ContactCreationTests extends TestBase {
 
     @Test(dataProvider = "validContactFromJson")
     public void testContactCreation(ContactData contact) throws Exception {
+        app.goTo().clickLink("home");
         Contacts before = app.contact().all();
 
         app.contact().create(contact, true);

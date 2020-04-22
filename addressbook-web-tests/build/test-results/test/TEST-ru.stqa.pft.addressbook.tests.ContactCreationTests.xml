@@ -1,12 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="ru.stqa.pft.addressbook.tests.ContactCreationTests" tests="6" skipped="0" failures="0" errors="0" timestamp="2020-04-22T04:24:30" hostname="DESKTOP-LRA1H77" time="19.317">
+<testsuite name="ru.stqa.pft.addressbook.tests.ContactCreationTests" tests="1" skipped="0" failures="0" errors="0" timestamp="2020-04-22T06:01:05" hostname="DESKTOP-LRA1H77" time="3.228">
   <properties/>
-  <testcase name="testContactCreation[0](ContactData{id='2147483647', firstName='First name 0', lastName='Last name 0'})" classname="ru.stqa.pft.addressbook.tests.ContactCreationTests" time="3.155"/>
-  <testcase name="testContactCreation[1](ContactData{id='2147483647', firstName='First name 1', lastName='Last name 1'})" classname="ru.stqa.pft.addressbook.tests.ContactCreationTests" time="2.894"/>
-  <testcase name="testContactCreation[2](ContactData{id='2147483647', firstName='First name 2', lastName='Last name 2'})" classname="ru.stqa.pft.addressbook.tests.ContactCreationTests" time="3.108"/>
-  <testcase name="testContactCreation[3](ContactData{id='2147483647', firstName='First name 3', lastName='Last name 3'})" classname="ru.stqa.pft.addressbook.tests.ContactCreationTests" time="3.196"/>
-  <testcase name="testContactCreation[4](ContactData{id='2147483647', firstName='First name 4', lastName='Last name 4'})" classname="ru.stqa.pft.addressbook.tests.ContactCreationTests" time="3.493"/>
-  <testcase name="testContactCreation[5](ContactData{id='2147483647', firstName='First name 5', lastName='Last name 5'})" classname="ru.stqa.pft.addressbook.tests.ContactCreationTests" time="3.47"/>
+  <testcase name="testContactCreation[0](ContactData{id='2147483647', firstName='First name 0', lastName='Last name 0'})" classname="ru.stqa.pft.addressbook.tests.ContactCreationTests" time="3.228"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

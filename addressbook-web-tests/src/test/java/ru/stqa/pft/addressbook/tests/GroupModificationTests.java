@@ -24,7 +24,7 @@ public class GroupModificationTests extends TestBase {
     public void testGroupModification() {
         Groups before = app.group().all();
         GroupData modifiedGroup = before.iterator().next(); // вернет любой элемент множества
-        GroupData group = new GroupData().withId(modifiedGroup.getGroupId()).withName("testModified").
+        GroupData group = new GroupData().withId(modifiedGroup.getGroupId()).withName("test1").
                 withHeader("newHeader").withFooter("newFooter");
 
         app.group().modify(group);

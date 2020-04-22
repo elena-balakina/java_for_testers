@@ -1,52 +1,7 @@
 [
   {
-    "groupName": "test 0",
-    "groupHeader": "header 0",
-    "groupFooter": "footer 0"
-  },
-  {
-    "groupName": "test 1",
-    "groupHeader": "header 1",
-    "groupFooter": "footer 1"
-  },
-  {
-    "groupName": "test 2",
-    "groupHeader": "header 2",
-    "groupFooter": "footer 2"
-  },
-  {
-    "groupName": "test 3",
-    "groupHeader": "header 3",
-    "groupFooter": "footer 3"
-  },
-  {
-    "groupName": "test 4",
-    "groupHeader": "header 4",
-    "groupFooter": "footer 4"
-  },
-  {
-    "groupName": "test 5",
-    "groupHeader": "header 5",
-    "groupFooter": "footer 5"
-  },
-  {
-    "groupName": "test 6",
-    "groupHeader": "header 6",
-    "groupFooter": "footer 6"
-  },
-  {
-    "groupName": "test 7",
-    "groupHeader": "header 7",
-    "groupFooter": "footer 7"
-  },
-  {
-    "groupName": "test 8",
-    "groupHeader": "header 8",
-    "groupFooter": "footer 8"
-  },
-  {
-    "groupName": "test 9",
-    "groupHeader": "header 9",
-    "groupFooter": "footer 9"
+    "groupName": "test1",
+    "groupHeader": "header1",
+    "groupFooter": "footer1"
   }
 ]
