@@ -3,21 +3,35 @@ package ru.stqa.pft.addressbook.model;
 import com.google.gson.annotations.Expose;
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 import com.thoughtworks.xstream.annotations.XStreamOmitField;
+import org.hibernate.annotations.Type;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import java.util.Objects;
 
 @XStreamAlias("group")
+@Entity
+@Table(name = "group_list")
 public class GroupData {
     @XStreamOmitField //не хотим, чтобы id сохранялся в XML-файл
+    @Id                         // привязка к БД
+    @Column(name = "group_id") // привязка к БД
     private int groupId = Integer.MAX_VALUE; // id группы будет больше всех и она окажется самой последней при сортировке;
 
     @Expose // поле будет включено в файл Json
+    @Column(name = "group_name")
     private String groupName;
 
     @Expose // поле будет включено в файл Json
+    @Column(name = "group_header")
+    @Type(type = "text") //многострочное текстовое поле в БД
     private String groupHeader;
 
     @Expose // поле будет включено в файл Json
+    @Column(name = "group_footer")
+    @Type(type = "text") //многострочное текстовое поле в БД
     private String groupFooter;
 
     public int getGroupId() {
