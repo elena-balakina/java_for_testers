@@ -18,20 +18,21 @@ public class GroupDeletionTests extends TestBase {
     public void ensurePreconditions() {
         app.goTo().clickLink("groups");
 
-        if (app.group().all().size() == 0) {
+        if (app.db().groups().size() == 0) {
+            app.goTo().clickLink("groups");
             app.group().create(new GroupData().withName("testNEW"));
         }
     }
 
     @Test
     public void testGroupDeletion() throws Exception {
-        Groups before = app.group().all();
+        Groups before = app.db().groups();
 
         GroupData deletedGroup = before.iterator().next(); // вернет любой элемент множества
         app.group().delete(deletedGroup);
 
         assertThat(app.group().count(), equalTo(before.size() - 1));
-        Groups after = app.group().all();
+        Groups after = app.db().groups();
         assertThat(after, equalTo(before.without(deletedGroup)));
     }
 }
