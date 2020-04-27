@@ -3,36 +3,62 @@ package ru.stqa.pft.addressbook.model;
 import com.google.gson.annotations.Expose;
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 import com.thoughtworks.xstream.annotations.XStreamOmitField;
+import org.hibernate.annotations.Type;
 
+import javax.persistence.*;
 import java.io.File;
 import java.util.Objects;
 
 @XStreamAlias("contact")
+@Entity
+@Table(name = "addressbook")
 public class ContactData {
     @XStreamOmitField //не хотим, чтобы id сохранялся в XML-файл
+    @Id                         // привязка к БД
+    @Column(name = "id") // привязка к БД
     private int id = Integer.MAX_VALUE;
     @Expose // поле будет включено в файл Json
+    @Column(name = "firstname") // привязка к БД
     private String firstName;
     @Expose
+    @Column(name = "lastname") // привязка к БД
     private String lastName;
     @Expose
+    @Column(name = "address") // привязка к БД
+    @Type(type = "text")
     private String address;
+    @Transient
     private String allPhones;
     @Expose
+    @Column(name = "home") // привязка к БД
+    @Type(type = "text")
     private String homePhone;
     @Expose
+    @Column(name = "mobile") // привязка к БД
+    @Type(type = "text")
     private String mobilePhone;
     @Expose
+    @Column(name = "work") // привязка к БД
+    @Type(type = "text")
     private String workPhone;
+    @Transient
     private String allEmails;
     @Expose
+    @Column(name = "email") // привязка к БД
+    @Type(type = "text")
     private String email;
     @Expose
+    @Column(name = "email2") // привязка к БД
+    @Type(type = "text")
     private String email2;
     @Expose
+    @Column(name = "email3") // привязка к БД
+    @Type(type = "text")
     private String email3;
     @Expose
+    @Transient
     private String group;
+    @Transient
     private File photo;
 
     public int getId() {
