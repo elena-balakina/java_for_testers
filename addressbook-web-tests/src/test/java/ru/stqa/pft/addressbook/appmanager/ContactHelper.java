@@ -31,7 +31,11 @@ public class ContactHelper extends HelperBase {
         attach(By.name("photo"), contactData.getPhoto());
 
         if (creation) {
-            new Select(driver.findElement(By.name("new_group"))).selectByVisibleText(contactData.getGroup());
+            if (contactData.getGroups().size() > 0) {
+                Assert.assertTrue(contactData.getGroups().size() == 1);
+                new Select(driver.findElement(By.name("new_group"))).selectByVisibleText(contactData.getGroups().
+                        iterator().next().getGroupName());
+            }
         } else {
             Assert.assertFalse(isElementPresent(By.name("new_group")));
         }
@@ -80,6 +84,21 @@ public class ContactHelper extends HelperBase {
         selectContactById(contact.getId());
         deleteSelectedContact();
         driver.switchTo().alert().accept();
+        click(By.linkText("home"));
+    }
+
+    public void addToGroup(ContactData contact) {
+        selectContactById(contact.getId());
+        click(By.name("add"));
+        click(By.linkText("home"));
+    }
+
+    public void deleteFromGroup(ContactData contact) {
+        String to_group = driver.findElement(By.name("to_group")).getText();
+        driver.findElement(By.name("group")).sendKeys(to_group);
+
+        selectContactById(contact.getId());
+        click(By.name("remove"));
         click(By.linkText("home"));
     }
 

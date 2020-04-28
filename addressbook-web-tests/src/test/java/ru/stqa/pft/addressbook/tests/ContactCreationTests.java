@@ -27,10 +27,10 @@ public class ContactCreationTests extends TestBase {
         File photo = new File("src/test/resources/tiger.png");
         list.add(new Object[]{new ContactData().withFirstName("First Name 1").withLastName("Last Name 1").withAddress("Address 1").
                 withHomePhone("home phone 1").withMobilePhone("mobile phone 1").withWorkPhone("work phone 1").
-                withEmail("email 1").withEmail2("email2 1").withEmail3("email3 1").withGroup("test1").withPhoto(photo)});
+                withEmail("email 1").withEmail2("email2 1").withEmail3("email3 1").withPhoto(photo)});
         list.add(new Object[]{new ContactData().withFirstName("First Name 2").withLastName("Last Name 2").withAddress("Address 2").
                 withHomePhone("home phone 2").withMobilePhone("mobile phone 2").withWorkPhone("work phone 2").
-                withEmail("email 2").withEmail2("email2 2").withEmail3("email3 2").withGroup("test1").withPhoto(photo)});
+                withEmail("email 2").withEmail2("email2 2").withEmail3("email3 2").withPhoto(photo)});
 
         return list.iterator();
     }
@@ -47,7 +47,7 @@ public class ContactCreationTests extends TestBase {
                 String[] split = line.split(";");
                 list.add(new Object[]{new ContactData().withFirstName(split[0]).withLastName(split[1]).withAddress(split[2]).
                         withHomePhone(split[3]).withMobilePhone(split[4]).withWorkPhone(split[5]).
-                        withEmail(split[6]).withEmail2(split[7]).withEmail3(split[8]).withGroup(split[9]).withPhoto(photo)});
+                        withEmail(split[6]).withEmail2(split[7]).withEmail3(split[8]).withPhoto(photo)});
                 line = reader.readLine();
             }
 

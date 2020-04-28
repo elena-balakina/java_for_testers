@@ -5,11 +5,10 @@ import com.thoughtworks.xstream.annotations.XStreamAlias;
 import com.thoughtworks.xstream.annotations.XStreamOmitField;
 import org.hibernate.annotations.Type;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 @XStreamAlias("group")
 @Entity
@@ -34,6 +33,10 @@ public class GroupData {
     @Type(type = "text") //многострочное текстовое поле в БД
     private String groupFooter;
 
+    @ManyToMany(mappedBy = "groups") // остальное описание в парном классе ContactData
+    private Set<ContactData> contact = new HashSet<ContactData>();
+
+
     public int getGroupId() {
         return groupId;
     }
@@ -49,6 +52,11 @@ public class GroupData {
     public String getGroupFooter() {
         return groupFooter;
     }
+
+    public Contacts getContacts() {
+        return new Contacts(contact);
+    }
+
 
     public GroupData withId(int groupId) {
         this.groupId = groupId;
