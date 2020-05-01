@@ -42,4 +42,12 @@ public class ApplicationManager {
         //navigationHelper.clickLink("Logout");
         driver.quit();
     }
+
+    public HTTPSession newSession(){
+        return new HTTPSession(this);
+    }
+
+    public String getProperty(String key) {
+        return properties.getProperty(key);
+    }
 }
