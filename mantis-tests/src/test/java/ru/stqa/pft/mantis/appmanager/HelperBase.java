@@ -18,6 +18,10 @@ public class HelperBase {
         driver.findElement(locator).click();
     }
 
+    protected void selectByVisibleText(By locator, String text) {
+        driver.findElement(locator).sendKeys(text);
+    }
+
     protected void type(By locator, String text) {
         click(locator);
         if (text != null) {

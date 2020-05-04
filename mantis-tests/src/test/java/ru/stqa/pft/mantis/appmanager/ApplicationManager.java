@@ -18,6 +18,8 @@ public class ApplicationManager {
     private String browser;
     private WebDriver driver; // webdrivers лежат в папке C:\Windows\System32
     private RegistrationHelper registrationHelper;
+    private ResetPasswordHelper resetPasswordHelper;
+    private LoginHelper loginHelper;
     private FTPHelper ftp;
     private MailHelper mailHelper;
 
@@ -50,6 +52,20 @@ public class ApplicationManager {
             registrationHelper = new RegistrationHelper(this);
         }
         return registrationHelper;
+    }
+
+    public ResetPasswordHelper resetPassword() {
+        if (resetPasswordHelper == null) {
+            resetPasswordHelper = new ResetPasswordHelper(this);
+        }
+        return resetPasswordHelper;
+    }
+
+    public LoginHelper loginHelper() {
+        if (loginHelper == null) {
+            loginHelper = new LoginHelper(this);
+        }
+        return loginHelper;
     }
 
     public FTPHelper ftp() {

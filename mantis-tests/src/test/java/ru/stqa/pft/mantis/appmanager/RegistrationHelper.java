@@ -12,14 +12,12 @@ public class RegistrationHelper extends HelperBase {
         driver.get(app.getProperty("web.baseUrl") + "/signup_page.php");
         type(By.name("username"), username);
         type(By.name("email"), email);
-        //click(By.cssSelector("input[value=\"Signup\"]"));
-        //click(By.cssSelector("input[value=\"Зарегистрироваться\"]"));
-
         click(By.cssSelector("input[type='submit']"));
     }
 
     public void finish(String confirmationLink, String password) {
         driver.get(confirmationLink);
+        type(By.id("realname"), "user4");
         type(By.name("password"), password);
         type(By.name("password_confirm"), password);
         click(By.cssSelector("button[type='submit']"));
