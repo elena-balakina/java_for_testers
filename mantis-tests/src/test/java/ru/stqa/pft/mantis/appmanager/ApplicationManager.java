@@ -19,6 +19,7 @@ public class ApplicationManager {
     private WebDriver driver; // webdrivers лежат в папке C:\Windows\System32
     private RegistrationHelper registrationHelper;
     private FTPHelper ftp;
+    private MailHelper mailHelper;
 
     public ApplicationManager(String browser) {
         this.browser = browser;
@@ -72,5 +73,12 @@ public class ApplicationManager {
             driver.get(properties.getProperty("web.baseUrl"));       //driver.get("http://localhost/mantisbt-2.24.0/");
         }
         return driver;
+    }
+
+    public MailHelper mail(){
+        if (mailHelper == null) {
+            mailHelper = new MailHelper(this);
+        }
+        return mailHelper;
     }
 }

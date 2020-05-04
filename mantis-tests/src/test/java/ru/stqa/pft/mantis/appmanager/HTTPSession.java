@@ -34,7 +34,8 @@ public class HTTPSession {
         post.setEntity(new UrlEncodedFormEntity(params));
         CloseableHttpResponse response_login = httpClient.execute(post);
         String body_login = getTextFrom(response_login);
-        return body_login.contains(String.format("<span class=\"label hidden-xs label-default arrowed\">%s</span>", username));
+        //return body_login.contains(String.format("<span class=\"label hidden-xs label-default arrowed\">%s</span>", username));
+        return body_login.contains(String.format("<a href=\"/mantisbt-2.24.0/account_page.php\">%s</a>", username));
     }
 
     private String getTextFrom(CloseableHttpResponse response) throws IOException {
