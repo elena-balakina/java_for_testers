@@ -14,6 +14,14 @@ dependencies {
     compile 'org.subethamail:subethasmtp:3.1.7'
     compile 'ru.lanwen.verbalregex:java-verbal-expressions:1.4'
     compile 'mysql:mysql-connector-java:5.1.38'
+
+    implementation "javax.xml.bind:jaxb-api:2.2.11"
+    implementation "com.sun.xml.bind:jaxb-core:2.2.11"
+    implementation "com.sun.xml.bind:jaxb-impl:2.2.11"
+    implementation "javax.activation:activation:1.1.1"
+
+
+    implementation ('org.testng:testng') { version { strictly '7.0.0' } }
 }
 
 test {
