@@ -33,12 +33,9 @@ public class ResetPasswordTests extends TestBase {
         // переходит на страницу управления пользователями
         app.resetPassword().openManageUsersPage();
 
-        // выбирает заданного пользователя и нажимает кнопку Reset Password
-        // взяли заранее созданного юзера user4 - password
-        String user = "user4";
+        // выбирает первого юзера, кроме администратора и нажимает кнопку Reset Password
+        String user = "";
         String email = "";
-
-        //получаем email из БД
 
         Connection conn = null;
         try {
@@ -46,16 +43,21 @@ public class ResetPasswordTests extends TestBase {
             Statement st = conn.createStatement();
             // аналог коллекции - набор строк, которые извлекаются из таблицы
             // rs - текущая строка, курсор
-            ResultSet rs = st.executeQuery("SELECT email FROM mantis_user_table WHERE username='" + user + "'");
+            ResultSet rs = st.executeQuery("SELECT username, email FROM mantis_user_table");
 
             while (rs.next()) {
-                email = rs.getString("email");
+                if (!rs.getString("username").equals("administrator")){
+                    user = rs.getString("username");
+                    email = rs.getString("email");
+                    break;
+                }
             }
 
             rs.close();
             st.close();
             conn.close();
 
+            System.out.println("User: " + user);
             System.out.println("Email: " + email);
 
         } catch (SQLException ex) {
@@ -76,7 +78,7 @@ public class ResetPasswordTests extends TestBase {
         String confirmationLink = findConfirmationLink(mailMessages, email);
 
         String newPassword = "NEWpassword";
-        app.registration().finish(confirmationLink, newPassword);
+        app.registration().finish(confirmationLink, user, newPassword);
 
 
         // Затем тесты должны проверить, что пользователь может войти в систему с новым паролем
