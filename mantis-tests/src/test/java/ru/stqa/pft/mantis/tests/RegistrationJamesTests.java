@@ -26,6 +26,7 @@ public class RegistrationJamesTests extends TestBase {
         String email = String.format("user%s@localhost.localdomain", now);
         String user = "user" + now;
         String password = "password";
+        //String email = String.format("user%s@localhost", now);
 
         // создаем пользователя на почтовом сервере
         app.james().createUser(user, password);
