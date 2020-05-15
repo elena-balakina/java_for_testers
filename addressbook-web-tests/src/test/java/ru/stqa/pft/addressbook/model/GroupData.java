@@ -33,7 +33,7 @@ public class GroupData {
     @Type(type = "text") //многострочное текстовое поле в БД
     private String groupFooter;
 
-    @ManyToMany(mappedBy = "groups") // остальное описание в парном классе ContactData
+    @ManyToMany(mappedBy = "groups", fetch = FetchType.EAGER) // остальное описание в парном классе ContactData
     private Set<ContactData> contact = new HashSet<ContactData>();
 
 

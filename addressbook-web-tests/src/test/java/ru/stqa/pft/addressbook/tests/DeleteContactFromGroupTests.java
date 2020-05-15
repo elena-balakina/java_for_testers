@@ -8,9 +8,6 @@ import ru.stqa.pft.addressbook.model.Contacts;
 import ru.stqa.pft.addressbook.model.GroupData;
 import ru.stqa.pft.addressbook.model.Groups;
 
-import static org.hamcrest.CoreMatchers.equalTo;
-import static org.hamcrest.MatcherAssert.assertThat;
-
 public class DeleteContactFromGroupTests extends TestBase {
     @BeforeMethod
     public void ensurePreconditions() {
@@ -31,26 +28,64 @@ public class DeleteContactFromGroupTests extends TestBase {
                     withMobilePhone("+79701111122").withWorkPhone("333-50-80").
                     withEmail("mail@gmail.com").withEmail2("mail2@gmail.com").withEmail3("mail3@gmail.com"), true);
         }
-
     }
 
     @Test
     public void testAddContactToGroup() {
-        Contacts beforeContacts = app.db().contacts();
-        Groups beforeGroups = app.db().groups();
+        GroupData selectedGroup = null;
+        ContactData contactToDelete = null;
 
-        ContactData modifiedContact = beforeContacts.iterator().next(); // вернет любой контакт
-        GroupData groupToRemoveFrom = beforeGroups.iterator().next(); // вернет любую группу
+        // Перебираем все группы и ищем такую, в которой есть хотя бы 1 контакт, чтобы его удалить из группы
+        while (isNull(selectedGroup)) {
+            for (GroupData group : app.db().groups()) {
+                if (group.getContacts().size() > 0) {
+                    selectedGroup = group;
+                    break;
+                }
+            }
 
-        // устанавливаем контакту группу, если она еще у него не установлена
-        if (modifiedContact.getGroups().size() == 0) {
-            app.contact().addToGroup(modifiedContact);
-            modifiedContact.inGroup(groupToRemoveFrom);
+            // если нет ни одной группы хотя бы с одним контактов, то берем любой контакт и добавляем его в любую группу
+            if (isNull(selectedGroup)) {
+                Contacts allContacts = app.db().contacts();
+                Groups allGroups = app.db().groups();
+
+                ContactData modifiedContact = allContacts.iterator().next(); // вернет любой контакт
+                GroupData groupToAddTo = allGroups.iterator().next(); // вернет любую группу
+
+                app.contact().addToGroup(modifiedContact);
+                modifiedContact.inGroup(groupToAddTo);
+            }
         }
 
-        app.contact().deleteFromGroup(modifiedContact);
-        modifiedContact.fromGroup(groupToRemoveFrom);
+        // ищем контакт, который добавлен в выбранную группу
+        while (isNull(contactToDelete)) {
+            for (ContactData contact : app.db().contacts()) {
+                if (contact.getGroups().contains(selectedGroup)) {
+                    contactToDelete = contact;
+                    break;
+                }
+            }
+        }
 
-        Assert.assertTrue(modifiedContact.getGroups().size() == 0);
+        System.out.println("Selected group: " + selectedGroup.getGroupName());
+        System.out.println("Selected contact : " + contactToDelete.getFirstName() + " " +
+                contactToDelete.getLastName());
+
+        int numberOfContactsGroupsBefore = contactToDelete.getGroups().size();
+
+        app.contact().deleteFromGroup(contactToDelete);
+        contactToDelete.fromGroup(selectedGroup);
+
+        int numberOfContactsGroupsAfter = contactToDelete.getGroups().size();
+
+        Assert.assertEquals(numberOfContactsGroupsBefore, numberOfContactsGroupsAfter + 1);
+    }
+
+    private boolean isNull(ContactData contact) {
+        return contact == null;
+    }
+
+    private boolean isNull(GroupData group) {
+        return group == null;
     }
 }
