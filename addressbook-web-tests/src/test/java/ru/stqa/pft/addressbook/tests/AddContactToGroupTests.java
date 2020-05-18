@@ -6,6 +6,13 @@ import org.testng.annotations.Test;
 import ru.stqa.pft.addressbook.model.ContactData;
 import ru.stqa.pft.addressbook.model.Contacts;
 import ru.stqa.pft.addressbook.model.GroupData;
+import ru.stqa.pft.addressbook.model.Groups;
+
+import java.util.HashSet;
+import java.util.Set;
+
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.equalTo;
 
 public class AddContactToGroupTests extends TestBase {
 
@@ -63,29 +70,29 @@ public class AddContactToGroupTests extends TestBase {
                     break;
                 }
             }
-
-            if (isNull(contactToAdd)) {
-                app.goTo().clickLink("home");
-                app.contact().create(new ContactData().withFirstName("Kolya").
-                        withLastName("Makov").withAddress("Xeron").withHomePhone("212-20-50").
-                        withMobilePhone("+79701111122").withWorkPhone("333-50-80").
-                        withEmail("mail@gmail.com").withEmail2("mail2@gmail.com").withEmail3("mail3@gmail.com"), true);
-            }
         }
-
 
         System.out.println("Selected group: " + groupToAddTo.getGroupName());
         System.out.println("Selected contact : " + contactToAdd.getFirstName() + " " + contactToAdd.getLastName());
 
+        Groups before = contactToAdd.getGroups();
+        System.out.println("Groups before: ");
+        for (GroupData group : before) {
+            System.out.println(group.getGroupName());
+        }
 
-        int numberOfContactsGroupsBefore = contactToAdd.getGroups().size();
-
-        app.contact().addToGroup(contactToAdd);
+        app.contact().addToGroup(contactToAdd, groupToAddTo);
         contactToAdd.inGroup(groupToAddTo);
 
-        int numberOfContactsGroupsAfter = contactToAdd.getGroups().size();
+        int id = contactToAdd.getId();
+        ContactData contactAdded = app.db().contacts().iterator().next().inGroup(groupToAddTo).withId(id);
+        Groups after = contactAdded.getGroups();
+        System.out.println("Groups after: ");
+        for (GroupData group : after) {
+            System.out.println(group.getGroupName());
+        }
 
-        Assert.assertEquals(numberOfContactsGroupsBefore, numberOfContactsGroupsAfter - 1);
+        assertThat(after, equalTo(before.withAdded(groupToAddTo)));
     }
 
     private boolean isNull(ContactData contact) {

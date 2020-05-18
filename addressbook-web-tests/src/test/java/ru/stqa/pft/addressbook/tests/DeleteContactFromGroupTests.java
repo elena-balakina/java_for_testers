@@ -8,6 +8,9 @@ import ru.stqa.pft.addressbook.model.Contacts;
 import ru.stqa.pft.addressbook.model.GroupData;
 import ru.stqa.pft.addressbook.model.Groups;
 
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.equalTo;
+
 public class DeleteContactFromGroupTests extends TestBase {
     @BeforeMethod
     public void ensurePreconditions() {
@@ -31,7 +34,7 @@ public class DeleteContactFromGroupTests extends TestBase {
     }
 
     @Test
-    public void testAddContactToGroup() {
+    public void testDeleteContactFromGroup() {
         GroupData selectedGroup = null;
         ContactData contactToDelete = null;
 
@@ -52,7 +55,7 @@ public class DeleteContactFromGroupTests extends TestBase {
                 ContactData modifiedContact = allContacts.iterator().next(); // вернет любой контакт
                 GroupData groupToAddTo = allGroups.iterator().next(); // вернет любую группу
 
-                app.contact().addToGroup(modifiedContact);
+                app.contact().addToGroup(modifiedContact, selectedGroup);
                 modifiedContact.inGroup(groupToAddTo);
             }
         }
@@ -71,14 +74,25 @@ public class DeleteContactFromGroupTests extends TestBase {
         System.out.println("Selected contact : " + contactToDelete.getFirstName() + " " +
                 contactToDelete.getLastName());
 
-        int numberOfContactsGroupsBefore = contactToDelete.getGroups().size();
+        Groups before = contactToDelete.getGroups();
+        System.out.println("Groups before: ");
+        for (GroupData group : before) {
+            System.out.println(group.getGroupName());
+        }
 
         app.contact().deleteFromGroup(contactToDelete);
         contactToDelete.fromGroup(selectedGroup);
 
-        int numberOfContactsGroupsAfter = contactToDelete.getGroups().size();
+        int id = contactToDelete.getId();
+        ContactData contactDeleted = app.db().contacts().iterator().next().withId(id);
 
-        Assert.assertEquals(numberOfContactsGroupsBefore, numberOfContactsGroupsAfter + 1);
+        Groups after = contactDeleted.getGroups();
+        System.out.println("Groups after: ");
+        for (GroupData group : after) {
+            System.out.println(group.getGroupName());
+        }
+
+        assertThat(after, equalTo(before.without(selectedGroup)));
     }
 
     private boolean isNull(ContactData contact) {
