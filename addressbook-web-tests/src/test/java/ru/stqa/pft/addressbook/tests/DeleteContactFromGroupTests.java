@@ -89,7 +89,7 @@ public class DeleteContactFromGroupTests extends TestBase {
         // берем из БД удаленный контакт
         while (isNull(contactDeleted)) {
             for (ContactData contact : app.db().contacts()) {
-                if (contact.getId()==id) {
+                if (contact.getId() == id) {
                     contactDeleted = contact;
                     break;
                 }
