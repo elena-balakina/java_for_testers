@@ -84,7 +84,17 @@ public class DeleteContactFromGroupTests extends TestBase {
         contactToDelete.fromGroup(selectedGroup);
 
         int id = contactToDelete.getId();
-        ContactData contactDeleted = app.db().contacts().iterator().next().withId(id);
+
+        ContactData contactDeleted = null;
+        // берем из БД удаленный контакт
+        while (isNull(contactDeleted)) {
+            for (ContactData contact : app.db().contacts()) {
+                if (contact.getId()==id) {
+                    contactDeleted = contact;
+                    break;
+                }
+            }
+        }
 
         Groups after = contactDeleted.getGroups();
         System.out.println("Groups after: ");

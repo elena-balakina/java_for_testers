@@ -85,7 +85,18 @@ public class AddContactToGroupTests extends TestBase {
         contactToAdd.inGroup(groupToAddTo);
 
         int id = contactToAdd.getId();
-        ContactData contactAdded = app.db().contacts().iterator().next().inGroup(groupToAddTo).withId(id);
+
+        ContactData contactAdded = null;
+        // берем из БД добавленный контакт
+        while (isNull(contactAdded)) {
+            for (ContactData contact : app.db().contacts()) {
+                if (contact.getId()==id) {
+                    contactAdded = contact;
+                    break;
+                }
+            }
+        }
+
         Groups after = contactAdded.getGroups();
         System.out.println("Groups after: ");
         for (GroupData group : after) {
