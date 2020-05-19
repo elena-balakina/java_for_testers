@@ -1,0 +1,79 @@
+{
+  "f00315cd3c0c0ed6f294638b21d5eefb" : {
+    "statistic" : {
+      "failed" : 0,
+      "broken" : 0,
+      "skipped" : 0,
+      "passed" : 1,
+      "unknown" : 0,
+      "total" : 1
+    },
+    "items" : [ {
+      "uid" : "e10a3dcf76a6b9b2",
+      "status" : "passed",
+      "time" : {
+        "start" : 1589883893975,
+        "stop" : 1589883894536,
+        "duration" : 561
+      }
+    } ]
+  },
+  "ac021ee8d7978abd7b9cd162a6fd0db6" : {
+    "statistic" : {
+      "failed" : 0,
+      "broken" : 0,
+      "skipped" : 0,
+      "passed" : 1,
+      "unknown" : 0,
+      "total" : 1
+    },
+    "items" : [ {
+      "uid" : "647f6046bcafd6c3",
+      "status" : "passed",
+      "time" : {
+        "start" : 1589883957433,
+        "stop" : 1589883958170,
+        "duration" : 737
+      }
+    } ]
+  },
+  "4a17e002e55cc4ee4207b9225432238b" : {
+    "statistic" : {
+      "failed" : 0,
+      "broken" : 0,
+      "skipped" : 0,
+      "passed" : 1,
+      "unknown" : 0,
+      "total" : 1
+    },
+    "items" : [ {
+      "uid" : "8bb72762ec647c6",
+      "status" : "passed",
+      "time" : {
+        "start" : 1589898349110,
+        "stop" : 1589898350071,
+        "duration" : 961
+      }
+    } ]
+  },
+  "a596366c8a120eff2aa9f528643a4dd5" : {
+    "statistic" : {
+      "failed" : 1,
+      "broken" : 0,
+      "skipped" : 0,
+      "passed" : 0,
+      "unknown" : 0,
+      "total" : 1
+    },
+    "items" : [ {
+      "uid" : "2ad0ba6b16955852",
+      "status" : "failed",
+      "statusDetails" : "AssertionError: \nExpected: <[GroupData{groupId='127', groupName='test1'}]>\n     but: was <[GroupData{groupId='126', groupName='test1'}, GroupData{groupId='127', groupName='test1'}]>",
+      "time" : {
+        "start" : 1589901309587,
+        "stop" : 1589901310969,
+        "duration" : 1382
+      }
+    } ]
+  }
+}

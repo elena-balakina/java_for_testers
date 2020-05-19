@@ -1,0 +1,5 @@
+"Status","Start Time","Stop Time","Duration in ms","Parent Suite","Suite","Sub Suite","Test Class","Test Method","Name","Description"
+"passed","Tue May 19 21:25:49 NOVT 2020","Tue May 19 21:25:50 NOVT 2020","961","","Default Suite","","Default Suite","testGroupModification","testGroupModification",""
+"passed","Tue May 19 17:25:57 NOVT 2020","Tue May 19 17:25:58 NOVT 2020","737","","Default Suite","","Default Suite","testDeleteContactFromGroup","testDeleteContactFromGroup",""
+"failed","Tue May 19 22:15:09 NOVT 2020","Tue May 19 22:15:10 NOVT 2020","1382","","Suite1","","Suite1","testGroupModification","testGroupModification",""
+"passed","Tue May 19 17:24:53 NOVT 2020","Tue May 19 17:24:54 NOVT 2020","561","","Default Suite","","Default Suite","testAddContactToGroup","testAddContactToGroup",""

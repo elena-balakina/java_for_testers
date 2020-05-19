@@ -1,0 +1,26 @@
+{
+  "uid" : "4b4757e66a1912dae1a509f688f20b0f",
+  "name" : "categories",
+  "children" : [ {
+    "name" : "Product defects",
+    "children" : [ {
+      "name" : "AssertionError: \nExpected: <[GroupData{groupId='127', groupName='test1'}]>\n     but: was <[GroupData{groupId='126', groupName='test1'}, GroupData{groupId='127', groupName='test1'}]>",
+      "children" : [ {
+        "name" : "testGroupModification",
+        "uid" : "2ad0ba6b16955852",
+        "parentUid" : "0140f35d75c10175488c1e563c87b714",
+        "status" : "failed",
+        "time" : {
+          "start" : 1589901309587,
+          "stop" : 1589901310969,
+          "duration" : 1382
+        },
+        "flaky" : false,
+        "newFailed" : false,
+        "parameters" : [ ]
+      } ],
+      "uid" : "0140f35d75c10175488c1e563c87b714"
+    } ],
+    "uid" : "8fb3a91ba5aaf9de24cc8a92edc82b5d"
+  } ]
+}

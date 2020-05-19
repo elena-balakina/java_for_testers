@@ -1,0 +1,41 @@
+[ {
+  "uid" : "647f6046bcafd6c3",
+  "name" : "testDeleteContactFromGroup",
+  "time" : {
+    "start" : 1589883957433,
+    "stop" : 1589883958170,
+    "duration" : 737
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "2ad0ba6b16955852",
+  "name" : "testGroupModification",
+  "time" : {
+    "start" : 1589901309587,
+    "stop" : 1589901310969,
+    "duration" : 1382
+  },
+  "status" : "failed",
+  "severity" : "normal"
+}, {
+  "uid" : "e10a3dcf76a6b9b2",
+  "name" : "testAddContactToGroup",
+  "time" : {
+    "start" : 1589883893975,
+    "stop" : 1589883894536,
+    "duration" : 561
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "8bb72762ec647c6",
+  "name" : "testGroupModification",
+  "time" : {
+    "start" : 1589898349110,
+    "stop" : 1589898350071,
+    "duration" : 961
+  },
+  "status" : "passed",
+  "severity" : "normal"
+} ]

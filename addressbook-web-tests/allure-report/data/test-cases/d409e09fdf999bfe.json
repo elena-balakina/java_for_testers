@@ -1,0 +1,44 @@
+{
+  "uid" : "d409e09fdf999bfe",
+  "name" : "testAddContactToGroup",
+  "fullName" : "Default Suite.testAddContactToGroup",
+  "historyId" : "f00315cd3c0c0ed6f294638b21d5eefb",
+  "time" : {
+    "start" : 1589797112511,
+    "stop" : 1589797112938,
+    "duration" : 427
+  },
+  "description" : "",
+  "descriptionHtml" : "",
+  "status" : "passed",
+  "flaky" : false,
+  "newFailed" : false,
+  "beforeStages" : [ ],
+  "afterStages" : [ ],
+  "labels" : [ {
+    "name" : "suite",
+    "value" : "Default Suite"
+  }, {
+    "name" : "testClass",
+    "value" : "Default Suite"
+  }, {
+    "name" : "testMethod",
+    "value" : "testAddContactToGroup"
+  }, {
+    "name" : "package",
+    "value" : "Default Suite"
+  }, {
+    "name" : "resultFormat",
+    "value" : "allure1"
+  } ],
+  "parameters" : [ ],
+  "links" : [ ],
+  "hidden" : true,
+  "retry" : true,
+  "extra" : {
+    "categories" : [ ],
+    "tags" : [ ]
+  },
+  "source" : "d409e09fdf999bfe.json",
+  "parameterValues" : [ ]
+}

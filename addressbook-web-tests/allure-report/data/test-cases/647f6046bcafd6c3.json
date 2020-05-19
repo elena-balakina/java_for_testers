@@ -1,0 +1,54 @@
+{
+  "uid" : "647f6046bcafd6c3",
+  "name" : "testDeleteContactFromGroup",
+  "fullName" : "Default Suite.testDeleteContactFromGroup",
+  "historyId" : "ac021ee8d7978abd7b9cd162a6fd0db6",
+  "time" : {
+    "start" : 1589883957433,
+    "stop" : 1589883958170,
+    "duration" : 737
+  },
+  "description" : "",
+  "descriptionHtml" : "",
+  "status" : "passed",
+  "flaky" : false,
+  "newFailed" : false,
+  "beforeStages" : [ ],
+  "afterStages" : [ ],
+  "labels" : [ {
+    "name" : "suite",
+    "value" : "Default Suite"
+  }, {
+    "name" : "testClass",
+    "value" : "Default Suite"
+  }, {
+    "name" : "testMethod",
+    "value" : "testDeleteContactFromGroup"
+  }, {
+    "name" : "package",
+    "value" : "Default Suite"
+  }, {
+    "name" : "resultFormat",
+    "value" : "allure1"
+  } ],
+  "parameters" : [ ],
+  "links" : [ ],
+  "hidden" : false,
+  "retry" : false,
+  "extra" : {
+    "severity" : "normal",
+    "retries" : [ {
+      "uid" : "282ad085f1605b13",
+      "status" : "passed",
+      "time" : {
+        "start" : 1589799785490,
+        "stop" : 1589799786212,
+        "duration" : 722
+      }
+    } ],
+    "categories" : [ ],
+    "tags" : [ ]
+  },
+  "source" : "647f6046bcafd6c3.json",
+  "parameterValues" : [ ]
+}

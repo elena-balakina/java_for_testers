@@ -1,0 +1,46 @@
+{
+  "uid" : "8bb72762ec647c6",
+  "name" : "testGroupModification",
+  "fullName" : "Default Suite.testGroupModification",
+  "historyId" : "4a17e002e55cc4ee4207b9225432238b",
+  "time" : {
+    "start" : 1589898349110,
+    "stop" : 1589898350071,
+    "duration" : 961
+  },
+  "description" : "",
+  "descriptionHtml" : "",
+  "status" : "passed",
+  "flaky" : false,
+  "newFailed" : false,
+  "beforeStages" : [ ],
+  "afterStages" : [ ],
+  "labels" : [ {
+    "name" : "suite",
+    "value" : "Default Suite"
+  }, {
+    "name" : "testClass",
+    "value" : "Default Suite"
+  }, {
+    "name" : "testMethod",
+    "value" : "testGroupModification"
+  }, {
+    "name" : "package",
+    "value" : "Default Suite"
+  }, {
+    "name" : "resultFormat",
+    "value" : "allure1"
+  } ],
+  "parameters" : [ ],
+  "links" : [ ],
+  "hidden" : false,
+  "retry" : false,
+  "extra" : {
+    "severity" : "normal",
+    "retries" : [ ],
+    "categories" : [ ],
+    "tags" : [ ]
+  },
+  "source" : "8bb72762ec647c6.json",
+  "parameterValues" : [ ]
+}
