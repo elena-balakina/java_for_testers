@@ -88,12 +88,10 @@ public class AddContactToGroupTests extends TestBase {
 
         ContactData contactAdded = null;
         // берем из БД добавленный контакт
-        while (isNull(contactAdded)) {
-            for (ContactData contact : app.db().contacts()) {
-                if (contact.getId()==id) {
-                    contactAdded = contact;
-                    break;
-                }
+        for (ContactData contact : app.db().contacts()) {
+            if (contact.getId() == id) {
+                contactAdded = contact;
+                break;
             }
         }
 
